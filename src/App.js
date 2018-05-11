@@ -29,6 +29,14 @@ class App extends Component {
         this.setState({ isCelsius: event.target.value === 'celsius' ? true : false })
     }
 
+    componentWillUpdate(nextProps, nextState) {
+        if (nextState.city && nextState.city !== this.state.city) this.forecast(nextState.city)
+    }
+
+    forecast(city) {
+        console.log('get gorecast for city: ', city);
+    }
+
     render() {
         return (
             <div>
