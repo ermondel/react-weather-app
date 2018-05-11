@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Header from './components/header/'
+import { API } from './api/weatherbit.api'
 
 class App extends Component {
     constructor(props) {
@@ -34,7 +35,11 @@ class App extends Component {
     }
 
     forecast(city) {
-        console.log('get gorecast for city: ', city);
+        API.getForecast(city).then(forecast => {
+            console.log('OK', forecast)
+        }).catch(error => {
+            console.log('NO', error)
+        })
     }
 
     render() {
