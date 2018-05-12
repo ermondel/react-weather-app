@@ -1,3 +1,7 @@
 Weather app on React
 ===============================
-in process
+
+**work in process**
+
+### Demo
+[ermondel.github.io/react-weather-app/](https://ermondel.github.io/react-weather-app/)

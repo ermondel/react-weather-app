@@ -53,6 +53,7 @@ class App extends Component {
                     period={ this.state.period }
                     isCelsius={ this.state.isCelsius }
                 />
+                <em>forecast see in console</em>
             </div>
         )
     }

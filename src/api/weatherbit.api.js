@@ -17,6 +17,7 @@ class WeatherbitApi {
      */
     requestForecast(city) {
         const url = `${this.getProtocol()}${this.BASE_URL}?key=${this.API_KEY}&lang=en&units=M&days=16&city=${city}`;
+        // const url = 'http://localhost:8080/tsttmp/myjson/weather-app/daily.json';
 
         return fetch(url).then(response => {
             if (Number(response.status) === 200) return response.json();
