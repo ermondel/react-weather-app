@@ -17,7 +17,9 @@ export function cityToLoc(city, title) {
 }
 
 /**
- * Convert all words of city name to uppercase
+ * To upper case first letters in all words of city name
+ * @param {string} city 
+ * @return {string}
  */
 export function cityUppercase(city) {
 	city = city.split(' ');

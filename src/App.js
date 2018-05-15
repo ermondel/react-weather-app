@@ -1,27 +1,29 @@
 import React, { Component } from 'react'
-import Header from './components/header/'
+import Header   from './components/header/'
 import Forecast from './components/forecast/'
-import { API } from './api/weatherbit.api'
+import { API }  from './api/weatherbit.api'
+import { cityUppercase } from './utils/util'
 
 class App extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            city: '',
-            period: 3,
-            isCelsius: true,
-            forecast: {},
+            city      : '',
+            period    : 3,
+            isCelsius : true,
+            forecast  : {},
         }
 
-        this.onSubmitSearch = this.onSubmitSearch.bind(this)
-        this.onChangePeriod = this.onChangePeriod.bind(this)
-        this.onChangeUnit   = this.onChangeUnit.bind(this)
+        this.onSubmitSearch   = this.onSubmitSearch.bind(this)
+        this.onChangePeriod   = this.onChangePeriod.bind(this)
+        this.onChangeUnit     = this.onChangeUnit.bind(this)
+        this.onChangeFavorite = this.onChangeFavorite.bind(this)
     }
 
     onSubmitSearch(event) {
         event.preventDefault()
-        this.setState({ city: event.target.elements.city.value })
+        this.setState({ city: cityUppercase(event.target.elements.city.value) })
     }
 
     onChangePeriod(event) {
@@ -30,6 +32,22 @@ class App extends Component {
 
     onChangeUnit(event) {
         this.setState({ isCelsius: event.target.value === 'celsius' ? true : false })
+    }
+
+    onChangeFavorite(event) {
+        if (event.target.checked) {
+            this.onAddFavorite()
+        } else {
+            this.onDelFavorite()
+        }
+    }
+
+    onAddFavorite() {
+        console.log('---', 'onAddFavorite')
+    }
+
+    onDelFavorite() {
+        console.log('---', 'onDelFavorite')
     }
 
     componentWillUpdate(nextProps, nextState) {
@@ -59,6 +77,8 @@ class App extends Component {
                 key={ 'header' }
             />,
             <Forecast 
+                onChangeFavorite={ this.onChangeFavorite }
+                city= { city }
                 period={ period } 
                 isCelsius={ isCelsius } 
                 forecast={ forecast }
