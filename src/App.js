@@ -45,19 +45,23 @@ class App extends Component {
     }
 
     render() {
+        // console.log('---', 'pererender');
+        const { city, period, isCelsius, forecast } = this.state
+
         return [
             <Header
                 onSubmitSearch={ this.onSubmitSearch }
                 onChangePeriod={ this.onChangePeriod }
                 onChangeUnit={ this.onChangeUnit }
-                city={ this.state.city }
-                period={ this.state.period }
-                isCelsius={ this.state.isCelsius }
+                city={ city }
+                period={ period }
+                isCelsius={ isCelsius }
                 key={ 'header' }
             />,
             <Forecast 
-                forecast={ this.state.forecast } 
-                isCelsius={ this.state.isCelsius } 
+                period={ period } 
+                isCelsius={ isCelsius } 
+                forecast={ forecast }
                 key={ 'forecast' } 
             />
         ]

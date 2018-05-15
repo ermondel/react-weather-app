@@ -3,9 +3,9 @@ import Day from '../day/'
 
 class Forecast extends Component {
     render() {
-        const { forecast, isCelsius } = this.props
+        const { period, isCelsius, forecast } = this.props
         // xxx console.log(forecast);
-        const forecasts = forecast.data ? forecast.data.map(data => (
+        const forecasts = forecast.data ? forecast.data.slice(0, period).map(data => (
             <Day key={ data.uid } data={ data } isCelsius={ isCelsius } />
         )): ''
 
