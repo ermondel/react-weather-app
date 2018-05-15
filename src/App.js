@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Header from './components/header/'
+import Forecast from './components/forecast/'
 import { API } from './api/weatherbit.api'
 
 class App extends Component {
@@ -10,6 +11,7 @@ class App extends Component {
             city: '',
             period: 3,
             isCelsius: true,
+            forecast: {},
         }
 
         this.onSubmitSearch = this.onSubmitSearch.bind(this)
@@ -36,26 +38,29 @@ class App extends Component {
 
     forecast(city) {
         API.getForecast(city).then(forecast => {
-            console.log('OK', forecast)
+            this.setState({ forecast })
         }).catch(error => {
             console.log('NO', error)
         })
     }
 
     render() {
-        return (
-            <div>
-                <Header
-                    onSubmitSearch={ this.onSubmitSearch }
-                    onChangePeriod={ this.onChangePeriod }
-                    onChangeUnit={ this.onChangeUnit }
-                    city={ this.state.city }
-                    period={ this.state.period }
-                    isCelsius={ this.state.isCelsius }
-                />
-                <em>forecast see in console</em>
-            </div>
-        )
+        return [
+            <Header
+                onSubmitSearch={ this.onSubmitSearch }
+                onChangePeriod={ this.onChangePeriod }
+                onChangeUnit={ this.onChangeUnit }
+                city={ this.state.city }
+                period={ this.state.period }
+                isCelsius={ this.state.isCelsius }
+                key={ 'header' }
+            />,
+            <Forecast 
+                forecast={ this.state.forecast } 
+                isCelsius={ this.state.isCelsius } 
+                key={ 'forecast' } 
+            />
+        ]
     }
 }
 

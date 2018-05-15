@@ -16,14 +16,18 @@ class WeatherbitApi {
      * @return object promise
      */
     requestForecast(city) {
-        const url = `${this.getProtocol()}${this.BASE_URL}?key=${this.API_KEY}&lang=en&units=M&days=16&city=${city}`;
-        // const url = 'http://localhost:8080/tsttmp/myjson/weather-app/daily.json';
+        // const url = `${this.getProtocol()}${this.BASE_URL}?key=${this.API_KEY}&lang=en&units=M&days=16&city=${city}`;
+        const url = 'http://localhost:8080/tsttmp/myjson/weather-app/daily.json';
 
         return fetch(url).then(response => {
             if (Number(response.status) === 200) return response.json();
             throw new Error('system');
         }).then(data => {
             data.timestamp = this.dateNow();
+            data.data = data.data.map((day, index) => {
+                day.uid = index;
+                return day;
+            });
             this.cache.unshift(data);
             return data;
         });
