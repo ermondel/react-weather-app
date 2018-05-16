@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Header   from './components/header/'
 import Forecast from './components/forecast/'
 import { API }  from './api/weatherbit.api'
-import { cityToLoc, cityFromLoc } from './utils/util'
+import { cityUppercase, cityToLoc, cityFromLoc } from './utils/util'
 
 class App extends Component {
     constructor(props) {
@@ -67,7 +67,7 @@ class App extends Component {
             cityToLoc(city, `Weather app :: forecast for ${city}`);
             document.title = `Forecast for ${city}`;
             
-            this.setState({ city, forecast, loading: false, error: '' })
+            this.setState({ city: cityUppercase(city), forecast, loading: false, error: '' })
 
         }).catch(error => {
 
@@ -85,6 +85,8 @@ class App extends Component {
 
     render() {
         const { city, period, isCelsius, forecast, loading, error } = this.state
+
+        // console.log('---', 'render', loading)
         
         return [
             <Header

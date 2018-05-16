@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { cityUppercase } from '../../utils/util'
 
 class City extends Component {
     render() {
@@ -11,7 +10,7 @@ class City extends Component {
                     <input type="checkbox" name="favorite" id="favorite" onChange={ onChangeFavorite } />
                     <span><span>favorite city</span></span>
                 </label>
-                <h1>{cityUppercase(city)}</h1>
+                <h1>{city}</h1>
             </div>
         )
     }

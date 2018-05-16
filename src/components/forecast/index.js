@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Day  from '../day/'
 import City from '../city/'
-import img_loading from '../../style/img/forecast-loading.gif';
-import img_error   from '../../style/img/forecast-error.jpg';
+import img_loading from '../../style/img/forecast-loading.gif'
+import img_error   from '../../style/img/forecast-error.jpg'
 
 class Forecast extends Component {
     render() {
