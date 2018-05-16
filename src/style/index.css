@@ -1,4 +1,4 @@
-/*! index.css v1.4.1 */
+/*! index.css v1.4.2 */
 
 /* Base */
 html { position: relative; min-height: 100%; }
@@ -27,6 +27,8 @@ form .left { flex-grow: 1; margin-bottom: 25px; }
 #search-box #city { border: none; padding: 1em 0% 1em 2%; flex-grow: 1; 
 border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
 #search-box #city:focus{ outline: 0; }
+/* firefox hack "Required input form RED border-outline" */
+[required] { box-shadow: none; }
 
 /* options box */
 #options #options-period { display: flex; flex-wrap: wrap; margin-bottom: 35px; }
