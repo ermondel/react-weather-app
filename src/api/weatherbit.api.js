@@ -21,7 +21,7 @@ class WeatherbitApi {
 
         return fetch(url).then(response => {
             if (Number(response.status) === 200) return response.json();
-            throw new Error('system');
+            throw new Error('request');
         }).then(data => {
             data.timestamp = this.dateNow();
             data.data = data.data.map((day, index) => {
@@ -81,7 +81,7 @@ class WeatherbitApi {
                 return this.requestForecast(city);
             }
         } else {
-            return new Promise(() => { throw new Error('invalid'); });
+            return new Promise(() => { throw new Error('validate'); });
         }
     }
 }

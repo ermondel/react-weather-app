@@ -14,6 +14,7 @@ class App extends Component {
             isCelsius : true,
             forecast  : {},
             loading   : false,
+            error     : '',
         }
 
         this.onSubmitSearch   = this.onSubmitSearch.bind(this)
@@ -25,8 +26,10 @@ class App extends Component {
     onSubmitSearch(event) {
         event.preventDefault()
         this.setState({ 
-            city: cityUppercase(event.target.elements.city.value),
-            loading: true,
+            city     : cityUppercase(event.target.elements.city.value),
+            forecast : {},
+            loading  : true,
+            error    : '',
         })
     }
 
@@ -60,17 +63,28 @@ class App extends Component {
 
     forecast(city) {
         API.getForecast(city).then(forecast => {
+
             cityToLoc(city, `Weather app :: forecast for ${city}`);
             document.title = `Forecast for ${city}`;
             
             this.setState({ forecast, loading: false })
+
         }).catch(error => {
-            console.log('NO', error)
+
+            let message = '';
+            switch (error.message) {
+                case "request":         message = 'No forecast available.'; break;
+                case "validate":        message = 'Invalid city name.';     break;
+                case "Failed to fetch": message = 'Server is not available, please try again later.'; break;
+                default:                message = 'Unknown error. Notify the administrator.';         break;
+            }
+            this.setState({ loading: false, error: message });
+            
         })
     }
 
     render() {
-        const { city, period, isCelsius, forecast, loading } = this.state
+        const { city, period, isCelsius, forecast, loading, error } = this.state
 
         return [
             <Header
@@ -89,6 +103,7 @@ class App extends Component {
                 isCelsius={ isCelsius } 
                 forecast={ forecast }
                 loading={ loading }
+                error={ error }
                 key={ 'forecast' } 
             />
         ]
