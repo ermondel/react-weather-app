@@ -11,6 +11,8 @@ export function cityFromLoc() {
 
 /**
  * Set city name to the browser address bar and history
+ * @param {string} city 
+ * @param {string} title 
  */
 export function cityToLoc(city, title) {
 	window.history.pushState({}, title, "?city=" + city.replace(' ', '_'));
