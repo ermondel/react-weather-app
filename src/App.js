@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Header   from './components/header/'
 import Forecast from './components/forecast/'
 import { API }  from './api/weatherbit.api'
-import { cityUppercase, cityToLoc } from './utils/util'
+import { cityToLoc, cityFromLoc } from './utils/util'
 
 class App extends Component {
     constructor(props) {
@@ -25,12 +25,7 @@ class App extends Component {
 
     onSubmitSearch(event) {
         event.preventDefault()
-        this.setState({ 
-            city     : cityUppercase(event.target.elements.city.value),
-            forecast : {},
-            loading  : true,
-            error    : '',
-        })
+        this.setState({ city: event.target.elements.city.value, loading: true })
     }
 
     onChangePeriod(event) {
@@ -61,13 +56,18 @@ class App extends Component {
         if (this.state.loading) this.forecast(this.state.city)
     }
 
+    componentDidMount() {
+        const city = cityFromLoc()
+        if (city) this.forecast(city)
+    }
+
     forecast(city) {
         API.getForecast(city).then(forecast => {
 
             cityToLoc(city, `Weather app :: forecast for ${city}`);
             document.title = `Forecast for ${city}`;
             
-            this.setState({ forecast, loading: false })
+            this.setState({ city, forecast, loading: false, error: '' })
 
         }).catch(error => {
 
@@ -78,14 +78,14 @@ class App extends Component {
                 case "Failed to fetch": message = 'Server is not available, please try again later.'; break;
                 default:                message = 'Unknown error. Notify the administrator.';         break;
             }
-            this.setState({ loading: false, error: message });
+            this.setState({ city, forecast: {}, loading: false, error: message });
             
         })
     }
 
     render() {
         const { city, period, isCelsius, forecast, loading, error } = this.state
-
+        
         return [
             <Header
                 onSubmitSearch={ this.onSubmitSearch }

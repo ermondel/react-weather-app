@@ -4,7 +4,7 @@
 export function cityFromLoc() {
 	if (window.URLSearchParams) {
 		const city = new URLSearchParams(window.location.search).get('city') || '';
-		return city ? city.replace('_', ' ') : '';
+		return city ? city.split('_').join(' ') : '';
 	}
 	return '';
 }
@@ -15,7 +15,7 @@ export function cityFromLoc() {
  * @param {string} title 
  */
 export function cityToLoc(city, title) {
-	window.history.pushState({}, title, "?city=" + city.replace(' ', '_'));
+	window.history.pushState({}, title, "?city=" + city.split(' ').join('_'));
 }
 
 /**

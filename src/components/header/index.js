@@ -4,7 +4,7 @@ class Header extends Component {
     render() {
 		const { onSubmitSearch, onChangePeriod, onChangeUnit } = this.props
 		const { city, period, isCelsius } = this.props
-
+		
         return (
 		<header>
 			<div id="header-inner">
