@@ -13,6 +13,7 @@ class App extends Component {
             period    : 3,
             isCelsius : true,
             forecast  : {},
+            loading   : false,
         }
 
         this.onSubmitSearch   = this.onSubmitSearch.bind(this)
@@ -23,7 +24,10 @@ class App extends Component {
 
     onSubmitSearch(event) {
         event.preventDefault()
-        this.setState({ city: cityUppercase(event.target.elements.city.value) })
+        this.setState({ 
+            city: cityUppercase(event.target.elements.city.value),
+            loading: true,
+        })
     }
 
     onChangePeriod(event) {
@@ -50,21 +54,20 @@ class App extends Component {
         console.log('---', 'onDelFavorite')
     }
 
-    componentWillUpdate(nextProps, nextState) {
-        if (nextState.city && nextState.city !== this.state.city) this.forecast(nextState.city)
+    componentDidUpdate(prevProps, prevState, prevContext) {
+        if (this.state.loading) this.forecast(this.state.city)
     }
 
     forecast(city) {
         API.getForecast(city).then(forecast => {
-            this.setState({ forecast })
+            this.setState({ forecast, loading: false })
         }).catch(error => {
             console.log('NO', error)
         })
     }
 
     render() {
-        // console.log('---', 'pererender');
-        const { city, period, isCelsius, forecast } = this.state
+        const { city, period, isCelsius, forecast, loading } = this.state
 
         return [
             <Header
@@ -82,6 +85,7 @@ class App extends Component {
                 period={ period } 
                 isCelsius={ isCelsius } 
                 forecast={ forecast }
+                loading={ loading }
                 key={ 'forecast' } 
             />
         ]
