@@ -1,8 +1,7 @@
-Weather app on React
-===============================
-
-*work in process*
-*at this moment app without history support and without visible log of favorites*
-
+![React](https://github.com/ermondel/tsttmp/blob/master/files/React48.png)
+### Basic info
+Weather app on React. Kottans-frontend-2018 task.
+### Technologies
+* Reactjs
 ### Demo
 [ermondel.github.io/react-weather-app/](https://ermondel.github.io/react-weather-app/)
