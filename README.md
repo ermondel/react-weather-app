@@ -1,12 +1,14 @@
-![React](https://github.com/ermondel/tsttmp/blob/master/files/icons48b/React48b.png)
+![React](https://github.com/ermondel/wiki/blob/master/files/icons48b/React48b.png)
 
 # Weather App with React
-*Kottans-frontend-2018 task.*  
+
+_Kottans-frontend-2018 task._
 
 #### Technologies
-| name |
-| --- |
-| ReactJS |
+
+| name              |
+| ----------------- |
+| ReactJS           |
 | weatherbit.io api |
 
 <!---
