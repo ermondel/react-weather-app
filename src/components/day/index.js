@@ -35,7 +35,10 @@ class Day extends Component {
         <div className='forecast-date'>{D_Month_Y(data.ts)}</div>
         <div className='forecast-description'>{data.weather.description}</div>
         <div className='forecast-img'>
-          <img src={require('./img/' + icon)} alt={data.weather.description} />
+          <img
+            src={require('../../assets/images/icons/' + icon).default}
+            alt={data.weather.description}
+          />
         </div>
         <div className='forecast-temp-avg'>{temp_avg}</div>
         <div className='forecast-max-temp-app fl'>
