@@ -1,48 +1,39 @@
 import React, { Component } from 'react';
-import Header from './components/header/';
-import Forecast from './components/forecast/';
+import Header from './components/Header';
+import Forecast from './components/Forecast';
 import { API } from './api/weatherbit.api';
 import { cityUppercase, cityToLoc, cityFromLoc } from './utils/util';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    city: '',
+    period: 3,
+    isCelsius: true,
+    forecast: {},
+    loading: false,
+    error: '',
+  };
 
-    this.state = {
-      city: '',
-      period: 3,
-      isCelsius: true,
-      forecast: {},
-      loading: false,
-      error: '',
-    };
-
-    this.onSubmitSearch = this.onSubmitSearch.bind(this);
-    this.onChangePeriod = this.onChangePeriod.bind(this);
-    this.onChangeUnit = this.onChangeUnit.bind(this);
-    this.onChangeFavorite = this.onChangeFavorite.bind(this);
-  }
-
-  onSubmitSearch(event) {
+  onSubmitSearch = (event) => {
     event.preventDefault();
     this.setState({ city: event.target.elements.city.value, loading: true });
-  }
+  };
 
-  onChangePeriod(event) {
+  onChangePeriod = (event) => {
     this.setState({ period: Number(event.target.value) });
-  }
+  };
 
-  onChangeUnit(event) {
+  onChangeUnit = (event) => {
     this.setState({ isCelsius: event.target.value === 'celsius' ? true : false });
-  }
+  };
 
-  onChangeFavorite(event) {
+  onChangeFavorite = (event) => {
     if (event.target.checked) {
       this.onAddFavorite();
     } else {
       this.onDelFavorite();
     }
-  }
+  };
 
   onAddFavorite() {
     console.log('---', 'onAddFavorite');
@@ -90,31 +81,30 @@ class App extends Component {
             message = 'Unknown error. Notify the administrator.';
             break;
         }
+
         this.setState({ city, forecast: {}, loading: false, error: message });
       });
   }
 
   render() {
-    const { city, period, isCelsius, forecast, loading, error } = this.state;
-
     return [
       <Header
         onSubmitSearch={this.onSubmitSearch}
         onChangePeriod={this.onChangePeriod}
         onChangeUnit={this.onChangeUnit}
-        city={city}
-        period={period}
-        isCelsius={isCelsius}
+        city={this.state.city}
+        period={this.state.period}
+        isCelsius={this.state.isCelsius}
         key={'header'}
       />,
       <Forecast
         onChangeFavorite={this.onChangeFavorite}
-        city={city}
-        period={period}
-        isCelsius={isCelsius}
-        forecast={forecast}
-        loading={loading}
-        error={error}
+        city={this.state.city}
+        period={this.state.period}
+        isCelsius={this.state.isCelsius}
+        forecast={this.state.forecast}
+        loading={this.state.loading}
+        error={this.state.error}
         key={'forecast'}
       />,
     ];

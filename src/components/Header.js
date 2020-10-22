@@ -1,34 +1,20 @@
 import React, { Component } from 'react';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
+  state = { city: this.props.city };
 
-    this.state = {
-      city: props.city,
-    };
-
-    this.handleCityChange = this.handleCityChange.bind(this);
-  }
-
-  handleCityChange(event) {
-    this.setState({ city: event.target.value });
-  }
+  handleCityChange = (event) => this.setState({ city: event.target.value });
 
   componentWillReceiveProps(nextProps) {
     this.setState({ city: nextProps.city });
   }
 
   render() {
-    const { onSubmitSearch, onChangePeriod, onChangeUnit } = this.props;
-    const { period, isCelsius } = this.props;
-    const { city } = this.state;
-
     return (
       <header>
         <div id='header-inner'>
           <h1>Weather forecast for the city up to 2 weeks</h1>
-          <form id='form' onSubmit={onSubmitSearch}>
+          <form id='form' onSubmit={this.props.onSubmitSearch}>
             <div className='left'>
               <div id='search-box'>
                 <label htmlFor='city' className='visuallyhidden' tabIndex='0'>
@@ -38,7 +24,7 @@ class Header extends Component {
                   type='text'
                   name='city'
                   id='city'
-                  value={city}
+                  value={this.state.city}
                   placeholder='e.g. New York'
                   onChange={this.handleCityChange}
                   required
@@ -52,8 +38,8 @@ class Header extends Component {
                       name='period'
                       value='1'
                       required
-                      checked={period === 1}
-                      onChange={onChangePeriod}
+                      checked={this.props.period === 1}
+                      onChange={this.props.onChangePeriod}
                     />
                     <span>day</span>
                   </label>
@@ -63,8 +49,8 @@ class Header extends Component {
                       name='period'
                       value='3'
                       required
-                      checked={period === 3}
-                      onChange={onChangePeriod}
+                      checked={this.props.period === 3}
+                      onChange={this.props.onChangePeriod}
                     />
                     <span>3 days</span>
                   </label>
@@ -74,8 +60,8 @@ class Header extends Component {
                       name='period'
                       value='7'
                       required
-                      checked={period === 7}
-                      onChange={onChangePeriod}
+                      checked={this.props.period === 7}
+                      onChange={this.props.onChangePeriod}
                     />
                     <span>week</span>
                   </label>
@@ -85,8 +71,8 @@ class Header extends Component {
                       name='period'
                       value='14'
                       required
-                      checked={period === 14}
-                      onChange={onChangePeriod}
+                      checked={this.props.period === 14}
+                      onChange={this.props.onChangePeriod}
                     />
                     <span>2 weeks</span>
                   </label>
@@ -98,8 +84,8 @@ class Header extends Component {
                       name='unit'
                       value='celsius'
                       required
-                      checked={isCelsius}
-                      onChange={onChangeUnit}
+                      checked={this.props.isCelsius}
+                      onChange={this.props.onChangeUnit}
                     />
                     <span>Celsius</span>
                   </label>
@@ -109,8 +95,8 @@ class Header extends Component {
                       name='unit'
                       value='fahrenheit'
                       required
-                      checked={!isCelsius}
-                      onChange={onChangeUnit}
+                      checked={!this.props.isCelsius}
+                      onChange={this.props.onChangeUnit}
                     />
                     <span>Fahrenheit</span>
                   </label>
