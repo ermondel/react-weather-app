@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import Forecast from './components/Forecast';
-import { API } from './api/weatherbit.api';
+import weatherbit from './api/weatherbit';
 import { cityUppercase, cityToLoc, cityFromLoc } from './utils/util';
 
 class App extends Component {
@@ -53,7 +53,7 @@ class App extends Component {
   }
 
   forecast(city) {
-    API.getForecast(city)
+    weatherbit(city)
       .then((forecast) => {
         cityToLoc(city, `Weather app :: forecast for ${city}`);
         document.title = `Forecast for ${city}`;
@@ -66,19 +66,17 @@ class App extends Component {
         });
       })
       .catch((error) => {
-        let message = '';
-        switch (error.message) {
-          case 'request':
-            message = 'No forecast available.';
+        let message;
+
+        switch (Number(error.message)) {
+          case 204:
+            message = 'No forecast available';
             break;
-          case 'validate':
-            message = 'Invalid city name.';
-            break;
-          case 'Failed to fetch':
-            message = 'Server is not available, please try again later.';
+          case 600:
+            message = 'Invalid city name';
             break;
           default:
-            message = 'Unknown error. Notify the administrator.';
+            message = 'Server is not available, please try again later';
             break;
         }
 
