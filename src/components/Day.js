@@ -1,9 +1,7 @@
 import React from 'react';
 import { filesManyToOne, D_Month_Y, CelsiusToFahrenheit } from '../utils/util';
 
-const Day = (props) => {
-  const { data, isCelsius } = props;
-
+const Day = ({ data, isCelsius }) => {
   const weather_icons_map = {
     'ico-01': 'c01d',
     'ico-03': 'c04d',

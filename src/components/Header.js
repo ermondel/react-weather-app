@@ -3,14 +3,20 @@ import SearchForm from './SearchForm';
 import Trigger from './Trigger';
 
 const Header = (props) => {
-  const { city, period, isCelsius, setCity, setPeriod, setUnit, submitForm } = props;
+  const { city, period, isCelsius, setCity, setPeriod, setUnit, submitCity } = props;
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    submitCity(city);
+  };
 
   return (
     <header>
       <div id='header-inner'>
         <h1>Weather forecast for the city up to 2 weeks</h1>
 
-        <form id='form' onSubmit={submitForm}>
+        <form id='form' onSubmit={onSubmit}>
           <div className='left'>
             <SearchForm city={city} setCity={setCity} />
 
