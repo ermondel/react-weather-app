@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import Content from './components/Content';
-import weatherbit from './api/weatherbit';
-import { cityUppercase, cityToLoc, cityFromLoc } from './utils/util';
+import weatherbit from './weatherbit.api';
+import { formatCityName, setCityToAddressBar, getCityFromAddressBar } from './util';
 
 class App extends Component {
   state = {
@@ -29,7 +29,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const city = cityFromLoc();
+    const city = getCityFromAddressBar();
 
     if (city) {
       this.getForecastByCity(city);
@@ -37,7 +37,7 @@ class App extends Component {
   }
 
   getForecastByCity = (city) => {
-    city = cityUppercase(city);
+    city = formatCityName(city);
 
     this.setState({
       status: 'loading',
@@ -46,7 +46,7 @@ class App extends Component {
     });
 
     const success = (forecast) => {
-      cityToLoc(city, `Weather: ${city}`);
+      setCityToAddressBar(city, `Weather: ${city}`);
 
       document.title = `Weather: ${city}`;
 
@@ -57,7 +57,7 @@ class App extends Component {
     };
 
     const error = (error) => {
-      cityToLoc(city, `Weather: error`);
+      setCityToAddressBar(city, `Weather: error`);
 
       document.title = `Weather: error`;
 
