@@ -33,6 +33,18 @@ const css = {
   ],
 };
 
+const scss = {
+  test: /\.s[ac]ss$/,
+  use: [
+    {
+      loader: MiniCssExtractPlugin.loader,
+      options: { hmr: isDev, reload: true },
+    },
+    'css-loader',
+    'sass-loader',
+  ],
+};
+
 const images = {
   test: /\.(png|jpg|svg|gif)$/,
   use: [
@@ -120,6 +132,6 @@ module.exports = {
     }),
   ],
   module: {
-    rules: [css, images, fonts, js(), html],
+    rules: [css, scss, images, fonts, js(), html],
   },
 };

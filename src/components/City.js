@@ -1,19 +1,19 @@
 import React from 'react';
 
 const City = (props) => (
-  <div id='forecast-header'>
-    <label>
+  <div className='city-name'>
+    <label className='city-name__favorite'>
       <input
         type='checkbox'
         name='favorite'
-        id='favorite'
+        className='city-name__checkbox'
         onChange={props.onChangeFavorite}
       />
-      <span>
-        <span>favorite city</span>
+      <span className='city-name__value'>
+        <span className='city-name__value__inner'>favorite city</span>
       </span>
     </label>
-    <h1>{props.city}</h1>
+    <h1 className='city-name__title'>{props.city}</h1>
   </div>
 );
 

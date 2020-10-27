@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Trigger = ({ name, val, text, checked, onChange }) => (
-  <label className='common-radio' tabIndex='0'>
+  <label className='options__radio'>
     <input
       type='radio'
       name={name}
@@ -9,9 +9,9 @@ const Trigger = ({ name, val, text, checked, onChange }) => (
       required
       checked={checked}
       onChange={onChange}
-      tabIndex='0'
+      className='options__radio-input'
     />
-    <span>{text}</span>
+    <span className='options__radio-value'>{text}</span>
   </label>
 );
 

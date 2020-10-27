@@ -32,11 +32,7 @@ const Content = (props) => {
       break;
   }
 
-  return (
-    <main>
-      <div id='main-inner'>{content}</div>
-    </main>
-  );
+  return <main className='main'>{content}</main>;
 };
 
 export default Content;

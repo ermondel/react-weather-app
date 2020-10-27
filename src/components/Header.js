@@ -12,16 +12,18 @@ const Header = (props) => {
   };
 
   return (
-    <header>
-      <div id='header-inner'>
-        <h1>Weather forecast for the city up to 2 weeks</h1>
+    <header className='header'>
+      <div className='header__inner'>
+        <h1 className='header__title'>
+          Weather forecast for the city up to 2 weeks
+        </h1>
 
-        <form id='form' onSubmit={onSubmit}>
-          <div className='left'>
+        <form id='form' className='search' onSubmit={onSubmit}>
+          <div className='search__main'>
             <SearchForm city={city} setCity={setCity} />
 
-            <div id='options'>
-              <div id='options-period'>
+            <div className='options'>
+              <div className='options__period'>
                 <Trigger
                   name='period'
                   val='1'
@@ -46,12 +48,12 @@ const Header = (props) => {
                 <Trigger
                   name='period'
                   val='14'
-                  text='week'
+                  text='2 weeks'
                   checked={period === 14}
                   onChange={setPeriod}
                 />
               </div>
-              <div id='options-unit'>
+              <div className='options__unit'>
                 <Trigger
                   name='unit'
                   val='celsius'
@@ -70,8 +72,13 @@ const Header = (props) => {
             </div>
           </div>
 
-          <div className='right'>
-            <input type='submit' value='Search' id='submit' tabIndex='0' />
+          <div className='search__btn'>
+            <input
+              type='submit'
+              value='Search'
+              className='search__btn-submit'
+              tabIndex='0'
+            />
           </div>
         </form>
       </div>

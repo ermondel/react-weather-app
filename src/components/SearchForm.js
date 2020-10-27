@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SearchForm = ({ city, setCity }) => (
-  <div id='search-box'>
+  <div className='search-form'>
     <label htmlFor='city' className='visuallyhidden' tabIndex='0'>
       Choose the city of your interest
     </label>
@@ -10,6 +10,7 @@ const SearchForm = ({ city, setCity }) => (
       type='text'
       name='city'
       id='city'
+      className='search-form__city'
       value={city}
       placeholder='e.g. New York'
       onChange={setCity}

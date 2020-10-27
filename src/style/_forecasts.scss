@@ -1,0 +1,91 @@
+.forecast {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.day {
+  padding: 23px;
+  border: 1px solid #e0e0e0;
+  max-width: 300px;
+  font-size: 1.2em;
+  margin-bottom: 25px;
+
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.day__date {
+  font-size: 0.7em;
+  width: 33%;
+  float: left;
+  padding-top: 0.3em;
+  color: green;
+}
+
+.day__description {
+  width: 67%;
+  float: left;
+  margin-bottom: 15px;
+  text-align: right;
+  color: #516b78;
+}
+
+.day__icon {
+  width: 40%;
+  float: left;
+  margin-bottom: 15px;
+}
+
+.day .day__temp-avg {
+  width: 60%;
+  float: left;
+  margin-bottom: 15px;
+  text-align: right;
+  color: darkcyan;
+  font-size: 1.6em;
+}
+
+.day__item-key {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 5px;
+  color: #767676;
+}
+
+.day__item-val {
+  display: block;
+  float: right;
+  color: #516b78;
+  text-align: right;
+}
+
+@media screen and (min-width: 755px) {
+  .forecast {
+    flex-flow: row wrap;
+    width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .day {
+    margin-right: 12px;
+  }
+}
+@media screen and (min-width: 1120px) {
+  .forecast {
+    width: 1085px;
+  }
+}
