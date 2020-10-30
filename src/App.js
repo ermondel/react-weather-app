@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import Content from './components/Content';
-import weatherbit from './weatherbit.api';
-import { formatCityName, setCityToAddressBar, getCityFromAddressBar } from './util';
+import weatherbit from './lib/weatherbit.api';
+import {
+  formatCityName,
+  setCityToAddressBar,
+  getCityFromAddressBar,
+} from './lib/util';
 
 class App extends Component {
   state = {

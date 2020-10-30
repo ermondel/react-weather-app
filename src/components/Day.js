@@ -1,5 +1,5 @@
 import React from 'react';
-import { getWeatherIcon, formatDateDMY, celsiusToFahrenheit } from '../util';
+import { getWeatherIcon, formatDateDMY, celsiusToFahrenheit } from '../lib/util';
 
 const Day = ({ data, isCelsius }) => {
   let temp_avg = data.temp + '°C';
