@@ -40,8 +40,15 @@ const scss = {
       loader: MiniCssExtractPlugin.loader,
       options: { hmr: isDev, reload: true },
     },
-    'css-loader',
-    'sass-loader',
+    {
+      loader: 'css-loader',
+    },
+    {
+      loader: 'postcss-loader',
+    },
+    {
+      loader: 'sass-loader',
+    },
   ],
 };
 
