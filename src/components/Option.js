@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Trigger = ({ name, val, text, checked, onChange }) => (
+const Option = ({ name, val, text, checked, onChange }) => (
   <label className='options__radio'>
     <input
       type='radio'
@@ -15,4 +15,4 @@ const Trigger = ({ name, val, text, checked, onChange }) => (
   </label>
 );
 
-export default Trigger;
+export default Option;

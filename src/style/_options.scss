@@ -1,17 +1,32 @@
-.options__period {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 35px;
+.mainform__options {
+  display: block;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+
+  background-color: white;
+  box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.6);
+
+  padding: 10px;
 }
 
-.options__unit {
-  display: flex;
-  flex-wrap: wrap;
+.mainform__period {
+  margin-bottom: 10px;
+}
+
+.mainform__unit {
+  margin-bottom: 12px;
 }
 
 .options__radio {
-  display: block;
+  display: inline-block;
   text-align: center;
+
+  width: 48%;
+  margin: 1%;
 }
 
 .options__radio-input {
@@ -24,39 +39,91 @@
 
 .options__radio-value {
   display: block;
+
+  margin: 0;
+  padding: 10px;
+
   color: #ffffff;
-  cursor: pointer;
   background-color: #3980ad;
-  width: 120px;
-  padding: 15px 10px;
-  margin-bottom: 15px;
-  margin-right: 7px;
+
   border-radius: 4px;
+  cursor: pointer;
 
   &:hover {
     background-color: #3980ad;
   }
 }
 
-@media screen and (min-width: 640px) {
-  .options__period {
-    margin-bottom: 0px;
+.mainform__actions {
+  text-align: center;
+}
+
+.mainform__btn-close {
+  margin: 0;
+  padding: 10px;
+  border: none;
+  background: none;
+
+  color: grey;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    color: tomato;
   }
 }
 
-@media screen and (min-width: 780px) {
-  .options {
+@media screen and (min-width: 500px) {
+  .mainform__options {
     display: flex;
     justify-content: space-between;
+
+    position: static;
+
+    background-color: transparent;
+    box-shadow: none;
+
+    padding: 0;
+    margin-bottom: 12px;
   }
 
-  .options__period {
+  .mainform__period {
+    margin-bottom: 0px;
+
+    width: 180px;
+  }
+
+  .mainform__unit {
     margin-bottom: 0px;
   }
 
-  .options__radio-value {
+  .options__radio {
     width: 80px;
-    background-color: #2e3d49;
+    margin: 0 7px 7px 0;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .options__radio-value {
     padding: 4px 3px;
+    background-color: transparent;
+  }
+
+  .mainform__actions {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 670px) {
+  .mainform__options {
+    margin-bottom: 18px;
+  }
+
+  .mainform__period {
+    width: auto;
   }
 }

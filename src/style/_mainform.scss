@@ -1,0 +1,85 @@
+.mainform__head {
+  display: flex;
+  align-items: flex-start;
+}
+
+.mainform__central {
+  flex-grow: 1;
+}
+
+.mainform__input {
+  box-sizing: border-box;
+
+  width: 100%;
+  padding: 10px 12px;
+
+  border: none;
+  border-radius: 4px;
+
+  margin-bottom: 25px;
+
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+}
+
+.mainform__btn-submit {
+  min-width: 100px;
+
+  padding: 10px 12px;
+  margin: 0 0 0 5px;
+
+  border: none;
+  border-radius: 4px;
+
+  color: #ffffff;
+  background-color: #15c26b;
+
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    outline: 0;
+    background-color: #3980ad;
+  }
+}
+
+.mainform__btn-menu {
+  padding: 0px 10px;
+  margin: 0 5px 0 0;
+
+  height: 36px;
+
+  border: none;
+  border-radius: 4px;
+
+  color: #ffffff;
+  background-color: #15c26b;
+
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    outline: 0;
+    background-color: #3980ad;
+  }
+}
+
+.mainform__burger {
+  border-top: 1px solid whitesmoke;
+  border-bottom: 1px solid whitesmoke;
+}
+
+.mainform__burger__inner {
+  background-color: whitesmoke;
+  width: 20px;
+  height: 1px;
+  margin: 6px 0;
+}
+
+@media screen and (min-width: 500px) {
+  .mainform__btn-menu {
+    display: none;
+  }
+}
