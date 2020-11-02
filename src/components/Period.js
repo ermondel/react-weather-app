@@ -1,37 +1,25 @@
 import React from 'react';
-import Option from './Option';
 
-const Period = ({ period, setPeriod }) => (
-  <div className='mainform__period'>
-    <Option
-      name='period'
-      val='1'
-      text='day'
-      checked={period === 1}
-      onChange={setPeriod}
-    />
-    <Option
-      name='period'
-      val='3'
-      text='3 days'
-      checked={period === 3}
-      onChange={setPeriod}
-    />
-    <Option
-      name='period'
-      val='7'
-      text='week'
-      checked={period === 7}
-      onChange={setPeriod}
-    />
-    <Option
-      name='period'
-      val='14'
-      text='2 weeks'
-      checked={period === 14}
-      onChange={setPeriod}
-    />
-  </div>
-);
+const Period = ({ period, setPeriod }) => {
+  return (
+    <div className='mainform__period'>
+      <button value='1' onClick={setPeriod} disabled={period === 1}>
+        day
+      </button>
+
+      <button value='3' onClick={setPeriod} disabled={period === 3}>
+        3 days
+      </button>
+
+      <button value='7' onClick={setPeriod} disabled={period === 7}>
+        week
+      </button>
+
+      <button value='14' onClick={setPeriod} disabled={period === 14}>
+        2 weeks
+      </button>
+    </div>
+  );
+};
 
 export default Period;

@@ -1,6 +1,5 @@
-.mainform__options {
-  display: block;
-
+.mainform__options,
+.mainform__options--hide {
   position: absolute;
   top: 0;
   right: 0;
@@ -11,6 +10,14 @@
   box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.6);
 
   padding: 10px;
+}
+
+.mainform__options {
+  display: block;
+}
+
+.mainform__options--hide {
+  display: none;
 }
 
 .mainform__period {

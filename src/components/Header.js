@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Period from './Period';
 import Unit from './Unit';
+import BtnMenuOpen from './BtnMenuOpen';
+import BtnMenuClose from './BtnMenuClose';
 
 const Header = (props) => {
+  const [menuVisibility, setMenuVisibility] = useState(true);
+
   const { city, period, isCelsius, setCity, setPeriod, setUnit, submitCity } = props;
 
   const onSubmit = (event) => {
     event.preventDefault();
-
     submitCity(city);
   };
+
+  let menuClass = 'mainform__options';
+  if (!menuVisibility) menuClass += '--hide';
 
   return (
     <header className='header'>
@@ -18,12 +24,7 @@ const Header = (props) => {
 
         <form id='form' className='mainform' onSubmit={onSubmit}>
           <div className='mainform__head'>
-            <button className='mainform__btn-menu'>
-              <div className='mainform__burger'>
-                <div className='mainform__burger__inner'></div>
-              </div>
-              <span className='visuallyhidden'>Menu</span>
-            </button>
+            <BtnMenuOpen setMenuVisibility={setMenuVisibility} />
 
             <div className='mainform__central'>
               <input
@@ -36,12 +37,10 @@ const Header = (props) => {
                 tabIndex='0'
               />
 
-              <div className='mainform__options'>
+              <div className={menuClass}>
                 <Period period={period} setPeriod={setPeriod} />
                 <Unit celsius={isCelsius} setUnit={setUnit} />
-                <div className='mainform__actions'>
-                  <button className='mainform__btn-close'>Close</button>
-                </div>
+                <BtnMenuClose setMenuVisibility={setMenuVisibility} />
               </div>
             </div>
 

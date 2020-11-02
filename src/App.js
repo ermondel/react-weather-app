@@ -18,11 +18,21 @@ class App extends Component {
     error: '',
   };
 
-  setCity = (e) => this.setState({ city: e.target.value });
+  setCity = (e) => {
+    this.setState({ city: e.target.value });
+  };
 
-  setPeriod = (e) => this.setState({ period: Number(e.target.value) });
+  setPeriod = (e) => {
+    e.preventDefault(); // ! Prevent form submission with settings buttons.
 
-  setUnit = (e) => this.setState({ isCelsius: e.target.value === 'celsius' });
+    this.setState({ period: Number(e.target.value) });
+  };
+
+  setUnit = (e) => {
+    e.preventDefault(); // ! Prevent form submission with settings buttons.
+
+    this.setState({ isCelsius: e.target.value === 'celsius' });
+  };
 
   onChangeFavorite = (event) => {
     if (event.target.checked) {
