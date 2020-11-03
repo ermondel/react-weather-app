@@ -7,6 +7,7 @@ const BtnMenuOpen = ({ setMenuVisibility }) => (
       event.preventDefault();
       setMenuVisibility(true);
     }}
+    tabIndex='0'
   >
     <div className='mainform__burger'>
       <div className='mainform__burger__inner'></div>

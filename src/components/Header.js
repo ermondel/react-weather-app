@@ -3,9 +3,10 @@ import Period from './Period';
 import Unit from './Unit';
 import BtnMenuOpen from './BtnMenuOpen';
 import BtnMenuClose from './BtnMenuClose';
+import BtnSubmit from './BtnSubmit';
 
 const Header = (props) => {
-  const [menuVisibility, setMenuVisibility] = useState(true);
+  const [menuVisibility, setMenuVisibility] = useState(false);
 
   const { city, period, isCelsius, setCity, setPeriod, setUnit, submitCity } = props;
 
@@ -25,7 +26,6 @@ const Header = (props) => {
         <form id='form' className='mainform' onSubmit={onSubmit}>
           <div className='mainform__head'>
             <BtnMenuOpen setMenuVisibility={setMenuVisibility} />
-
             <div className='mainform__central'>
               <input
                 type='text'
@@ -43,10 +43,7 @@ const Header = (props) => {
                 <BtnMenuClose setMenuVisibility={setMenuVisibility} />
               </div>
             </div>
-
-            <button className='mainform__btn-submit'>
-              <span>Search</span>
-            </button>
+            <BtnSubmit />
           </div>
         </form>
       </div>

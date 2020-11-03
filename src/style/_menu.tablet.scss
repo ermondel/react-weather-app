@@ -1,0 +1,42 @@
+@media screen and (min-width: 500px) {
+  .mainform__options--hide,
+  .mainform__options {
+    display: flex;
+    justify-content: space-between;
+
+    position: static;
+
+    background-color: transparent;
+    box-shadow: none;
+
+    padding: 0;
+    margin-bottom: 12px;
+  }
+
+  .mainform__period {
+    width: 250px;
+    margin-bottom: 0px;
+  }
+
+  .mainform__unit {
+    margin-bottom: 0px;
+  }
+
+  .mainform__actions {
+    display: none;
+  }
+
+  .mainform__btn-option {
+    width: 90px;
+    margin: 0 7px 7px 0;
+    padding: 4px 3px;
+
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+      outline: none;
+      background-color: #3980ad;
+    }
+  }
+}

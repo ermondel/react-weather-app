@@ -25,12 +25,16 @@
   &:focus {
     outline: none;
   }
+
+  &:focus::placeholder {
+    color: transparent;
+  }
 }
 
 .mainform__btn-submit {
-  min-width: 100px;
+  min-width: 45px;
 
-  padding: 10px 12px;
+  padding: 6px 0 3px 0;
   margin: 0 0 0 5px;
 
   border: none;
@@ -49,6 +53,14 @@
     outline: 0;
     background-color: #3980ad;
   }
+}
+
+.mainform__search-text {
+  display: none;
+}
+
+.mainform__search-icon {
+  display: inline-block;
 }
 
 .mainform__btn-menu {
@@ -88,5 +100,18 @@
 @media screen and (min-width: 500px) {
   .mainform__btn-menu {
     display: none;
+  }
+
+  .mainform__search-text {
+    display: inline;
+  }
+
+  .mainform__search-icon {
+    display: none;
+  }
+
+  .mainform__btn-submit {
+    min-width: 100px;
+    padding: 10px 12px;
   }
 }

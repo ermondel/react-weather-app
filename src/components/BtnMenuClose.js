@@ -8,6 +8,7 @@ const BtnMenuClose = ({ setMenuVisibility }) => (
         event.preventDefault();
         setMenuVisibility(false);
       }}
+      tabIndex='0'
     >
       Close
     </button>
