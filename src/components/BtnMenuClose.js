@@ -1,15 +1,8 @@
 import React from 'react';
 
-const BtnMenuClose = ({ setMenuVisibility }) => (
+const BtnMenuClose = ({ onClick }) => (
   <div className='mainform__actions'>
-    <button
-      className='mainform__btn-close'
-      onClick={(event) => {
-        event.preventDefault();
-        setMenuVisibility(false);
-      }}
-      tabIndex='0'
-    >
+    <button className='mainform__btn-close' onClick={onClick} tabIndex='0'>
       Close
     </button>
   </div>

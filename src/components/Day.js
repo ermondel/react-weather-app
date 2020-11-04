@@ -1,12 +1,12 @@
 import React from 'react';
 import { getWeatherIcon, formatDateDMY, celsiusToFahrenheit } from '../lib/util';
 
-const Day = ({ data, isCelsius }) => {
+const Day = ({ data, celsius }) => {
   let temp_avg = data.temp + '°C';
   let temp_max = data.max_temp + '°C';
   let temp_min = data.min_temp + '°C';
 
-  if (!isCelsius) {
+  if (!celsius) {
     temp_avg = celsiusToFahrenheit(data.temp) + '°F';
     temp_max = celsiusToFahrenheit(data.max_temp) + '°F';
     temp_min = celsiusToFahrenheit(data.min_temp) + '°F';

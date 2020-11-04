@@ -5,7 +5,7 @@ import ErrorMessage from './ErrorMessage';
 import Forecast from './Forecast';
 
 const Content = (props) => {
-  const { status, error, forecast, period, isCelsius, onChangeFavorite } = props;
+  const { status, error, forecast, period, celsius, onChangeFavorite } = props;
 
   let content;
 
@@ -22,7 +22,7 @@ const Content = (props) => {
       content = (
         <React.Fragment>
           <City city={forecast.city_name} onChangeFavorite={onChangeFavorite} />
-          <Forecast forecast={forecast} period={period} isCelsius={isCelsius} />
+          <Forecast forecast={forecast} period={period} celsius={celsius} />
         </React.Fragment>
       );
       break;

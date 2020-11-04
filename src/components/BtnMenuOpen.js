@@ -1,14 +1,7 @@
 import React from 'react';
 
-const BtnMenuOpen = ({ setMenuVisibility }) => (
-  <button
-    className='mainform__btn-menu'
-    onClick={(event) => {
-      event.preventDefault();
-      setMenuVisibility(true);
-    }}
-    tabIndex='0'
-  >
+const BtnMenuOpen = ({ onClick }) => (
+  <button className='mainform__btn-menu' onClick={onClick} tabIndex='0'>
     <div className='mainform__burger'>
       <div className='mainform__burger__inner'></div>
     </div>

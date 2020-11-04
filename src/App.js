@@ -12,27 +12,15 @@ class App extends Component {
   state = {
     city: '',
     period: 3,
-    isCelsius: true,
+    celsius: true,
     forecast: null, // object (see api doc)
     status: 'nothing', // nothing || loading || done || error
     error: '',
   };
 
-  setCity = (e) => {
-    this.setState({ city: e.target.value });
-  };
+  setPeriod = (e) => this.setState({ period: Number(e.target.value) });
 
-  setPeriod = (e) => {
-    e.preventDefault(); // ! Prevent form submission with settings buttons.
-
-    this.setState({ period: Number(e.target.value) });
-  };
-
-  setUnit = (e) => {
-    e.preventDefault(); // ! Prevent form submission with settings buttons.
-
-    this.setState({ isCelsius: e.target.value === 'celsius' });
-  };
+  setUnit = (e) => this.setState({ celsius: e.target.value === 'celsius' });
 
   onChangeFavorite = (event) => {
     if (event.target.checked) {
@@ -105,11 +93,9 @@ class App extends Component {
     return (
       <React.Fragment>
         <Header
-          city={this.state.city}
           period={this.state.period}
-          isCelsius={this.state.isCelsius}
-          setCity={this.setCity}
           setPeriod={this.setPeriod}
+          celsius={this.state.celsius}
           setUnit={this.setUnit}
           submitCity={this.getForecastByCity}
         />
@@ -118,7 +104,7 @@ class App extends Component {
           error={this.state.error}
           forecast={this.state.forecast}
           period={this.state.period}
-          isCelsius={this.state.isCelsius}
+          celsius={this.state.celsius}
           onChangeFavorite={this.onChangeFavorite}
         />
       </React.Fragment>
