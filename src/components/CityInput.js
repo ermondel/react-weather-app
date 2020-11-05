@@ -1,12 +1,13 @@
 import React from 'react';
 
-const CityInput = ({ city, setCity, submitCity }) => (
+const CityInput = ({ city, setCity, submitCity, loading }) => (
   <input
     type='text'
+    value={city + (loading ? '...' : '')}
+    tabIndex='0'
+    disabled={loading}
     placeholder='e.g. New York'
     className='mainform__input'
-    value={city}
-    tabIndex='0'
     onChange={(event) => {
       setCity(event.target.value);
     }}

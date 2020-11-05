@@ -29,6 +29,12 @@
   &:focus::placeholder {
     color: transparent;
   }
+
+  &:disabled {
+    color: grey;
+    background-color: white;
+    cursor: default;
+  }
 }
 
 .mainform__btn-submit {
@@ -52,6 +58,11 @@
   &:focus {
     outline: 0;
     background-color: #3980ad;
+  }
+
+  &:disabled {
+    background-color: #3980ad;
+    cursor: default;
   }
 }
 

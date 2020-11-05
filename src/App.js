@@ -98,6 +98,7 @@ class App extends Component {
           celsius={this.state.celsius}
           setUnit={this.setUnit}
           submitCity={this.getForecastByCity}
+          appStatus={this.state.status}
         />
         <Content
           status={this.state.status}

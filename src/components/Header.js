@@ -26,7 +26,12 @@ const Header = (props) => {
           <BtnMenuOpen onClick={openMenu} />
 
           <div className='mainform__central'>
-            <CityInput city={city} setCity={setCity} submitCity={submitCity} />
+            <CityInput
+              city={city}
+              setCity={setCity}
+              submitCity={submitCity}
+              loading={props.appStatus === 'loading'}
+            />
 
             <div className={menuClass}>
               <Period period={props.period} setPeriod={props.setPeriod} />
@@ -35,7 +40,7 @@ const Header = (props) => {
             </div>
           </div>
 
-          <BtnSubmit onClick={submitCity} />
+          <BtnSubmit onClick={submitCity} loading={props.appStatus === 'loading'} />
         </div>
       </div>
     </header>
