@@ -93,6 +93,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <Header
+          city={this.state.city}
           period={this.state.period}
           setPeriod={this.setPeriod}
           celsius={this.state.celsius}

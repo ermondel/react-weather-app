@@ -8,7 +8,7 @@ import CityInput from './CityInput';
 
 const Header = (props) => {
   const [menuVisibility, setMenuVisibility] = useState(false);
-  const [city, setCity] = useState('');
+  const [city, setCity] = useState(undefined);
 
   let menuClass = 'mainform__options';
   if (!menuVisibility) menuClass += '--hide';
@@ -27,7 +27,7 @@ const Header = (props) => {
 
           <div className='mainform__central'>
             <CityInput
-              city={city}
+              city={city === undefined ? props.city : city}
               setCity={setCity}
               submitCity={submitCity}
               loading={props.appStatus === 'loading'}
