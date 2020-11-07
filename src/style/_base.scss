@@ -1,0 +1,29 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: black;
+  background-color: white;
+}
+
+.visuallyhidden {
+  // by Richard Kalehoff
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+[required] {
+  // firefox hack - required input form has red border-outline
+  box-shadow: none;
+}

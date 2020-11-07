@@ -8,9 +8,10 @@
   top: 0;
   right: 0;
   left: 0;
+  bottom: 0;
   z-index: 1;
 
-  background-color: white;
+  background-color: #2e3d49;
   box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.6);
 
   padding: 10px;
@@ -29,6 +30,12 @@
 }
 
 .mainform__actions {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 10px;
+
   text-align: center;
 }
 
@@ -65,21 +72,24 @@
 }
 
 .mainform__btn-close {
+  padding: 10px 20px;
+
   margin: 0;
-  padding: 10px;
-  border: none;
   background: none;
+
+  border: 1px solid grey;
+  border-radius: 4px;
 
   font-family: Arial;
   font-size: 14px;
 
   color: grey;
-  font-weight: bold;
   cursor: pointer;
 
   &:hover,
   &:focus {
     outline: none;
-    color: tomato;
+    color: orange;
+    border-color: orange;
   }
 }

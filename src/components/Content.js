@@ -5,24 +5,32 @@ import ErrorMessage from './ErrorMessage';
 import Forecast from './Forecast';
 
 const Content = (props) => {
-  const { status, error, forecast, period, celsius, onChangeFavorite } = props;
-
   let content;
+  let className = 'main';
 
-  switch (status) {
+  if (!props.visible) className += '--hide';
+
+  switch (props.status) {
     case 'loading':
       content = <ProgressBar />;
       break;
 
     case 'error':
-      content = <ErrorMessage error={error} />;
+      content = <ErrorMessage error={props.error} />;
       break;
 
     case 'done':
       content = (
         <React.Fragment>
-          <City city={forecast.city_name} onChangeFavorite={onChangeFavorite} />
-          <Forecast forecast={forecast} period={period} celsius={celsius} />
+          <City
+            city={props.forecast.city_name}
+            onChangeFavorite={props.onChangeFavorite}
+          />
+          <Forecast
+            forecast={props.forecast}
+            period={props.period}
+            celsius={props.celsius}
+          />
         </React.Fragment>
       );
       break;
@@ -32,7 +40,7 @@ const Content = (props) => {
       break;
   }
 
-  return <main className='main'>{content}</main>;
+  return <main className={className}>{content}</main>;
 };
 
 export default Content;

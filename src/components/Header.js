@@ -14,8 +14,16 @@ const Header = (props) => {
   if (!menuVisibility) menuClass += '--hide';
 
   const submitCity = () => props.submitCity(city);
-  const openMenu = () => setMenuVisibility(true);
-  const closeMenu = () => setMenuVisibility(false);
+
+  const openMenu = () => {
+    setMenuVisibility(true);
+    props.setContentVisibility(false);
+  };
+
+  const closeMenu = () => {
+    setMenuVisibility(false);
+    props.setContentVisibility(true);
+  };
 
   return (
     <header className='header'>

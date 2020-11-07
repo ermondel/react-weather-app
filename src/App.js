@@ -16,6 +16,7 @@ class App extends Component {
     forecast: null, // object (see api doc)
     status: 'nothing', // nothing || loading || done || error
     error: '',
+    visible: true,
   };
 
   setPeriod = (e) => this.setState({ period: Number(e.target.value) });
@@ -89,6 +90,10 @@ class App extends Component {
     weatherbit(city).then(success).catch(error);
   };
 
+  setContentVisibility = (visible) => {
+    this.setState({ visible });
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -100,6 +105,7 @@ class App extends Component {
           setUnit={this.setUnit}
           submitCity={this.getForecastByCity}
           appStatus={this.state.status}
+          setContentVisibility={this.setContentVisibility}
         />
         <Content
           status={this.state.status}
@@ -108,6 +114,7 @@ class App extends Component {
           period={this.state.period}
           celsius={this.state.celsius}
           onChangeFavorite={this.onChangeFavorite}
+          visible={this.state.visible}
         />
       </React.Fragment>
     );
