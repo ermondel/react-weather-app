@@ -6,64 +6,112 @@
 
 .day {
   display: inline-block;
-  max-width: 300px;
+  box-sizing: border-box;
 
-  margin: 0 5px 8px 5px;
+  width: 90%;
+
+  margin-bottom: 8px;
   padding: 23px;
-
-  text-align: left;
-  font-size: 1.2em;
 
   border: 1px solid #e0e0e0;
   border-radius: 5px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+
+  font-size: 16px;
 
   &:hover {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   }
 }
 
-.day__date {
-  font-size: 0.7em;
-  width: 33%;
+._day__date {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+._day__date-full {
   float: left;
-  padding-top: 0.3em;
+  color: #767676;
+  font-size: 12px;
+}
+
+._day__date-day {
+  float: right;
   color: green;
 }
 
-.day__description {
-  width: 67%;
-  float: left;
-  margin-bottom: 15px;
-  text-align: right;
-  color: #516b78;
+._day__icon {
+  width: 100px;
+  margin: 0 auto;
 }
 
-.day__icon {
-  width: 40%;
-  float: left;
-  margin-bottom: 15px;
+._day__img {
+  width: 100%;
+  height: auto;
 }
 
-.day__temp-avg {
-  width: 60%;
-  float: left;
-  margin-bottom: 15px;
-  text-align: right;
+._day__temp-avg {
   color: darkcyan;
-  font-size: 1.6em;
+  font-size: 24px;
+  line-height: 24px;
+  margin-bottom: 15px;
+}
+
+._day__description {
+  color: #516b78;
+  margin-bottom: 20px;
+  line-height: 18px;
 }
 
 .day__item-key {
-  width: 100%;
-  overflow: hidden;
-  margin-bottom: 5px;
   color: #767676;
+  margin-bottom: 5px;
 }
 
 .day__item-val {
-  display: block;
-  float: right;
   color: #516b78;
-  text-align: right;
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 315px) {
+  ._day__icon {
+    float: left;
+    margin-right: 20px;
+  }
+
+  ._day__temp-avg {
+    text-align: right;
+  }
+
+  ._day__description {
+    text-align: right;
+  }
+
+  .day__item {
+    width: 100%;
+    overflow: hidden;
+    text-align: left;
+    margin-bottom: 5px;
+  }
+
+  .day__item-key {
+    float: left;
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+
+  .day__item-val {
+    float: right;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 365px) {
+  .day {
+    width: 316px;
+
+    margin-right: 5px;
+    margin-left: 5px;
+  }
 }
