@@ -1,6 +1,6 @@
 import React from 'react';
-import SearchIcon from '../assets/images/search.png';
-import LoadingIcon from '../assets/images/loading.png';
+import IconLoading from './IconLoading';
+import IconSearch from './IconSearch';
 
 const BtnSubmit = ({ onClick, loading }) => {
   const text = loading ? 'loading...' : 'Search';
@@ -13,11 +13,9 @@ const BtnSubmit = ({ onClick, loading }) => {
       className='mainform__btn-submit'
     >
       <span className='mainform__search-text'>{text}</span>
-      <img
-        src={loading ? LoadingIcon : SearchIcon}
-        alt={text}
-        className='mainform__search-icon'
-      />
+      <span className='mainform__search-icon'>
+        {loading ? <IconLoading /> : <IconSearch />}
+      </span>
     </button>
   );
 };
