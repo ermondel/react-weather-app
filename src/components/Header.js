@@ -13,7 +13,9 @@ const Header = (props) => {
   let menuClass = 'mainform__options';
   if (!menuVisibility) menuClass += '--hide';
 
-  const submitCity = () => props.submitCity(city);
+  const submitCity = () => {
+    props.submitCity(city === undefined ? props.city : city);
+  };
 
   const openMenu = () => {
     setMenuVisibility(true);

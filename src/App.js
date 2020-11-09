@@ -48,7 +48,7 @@ class App extends Component {
   }
 
   getForecastByCity = (city) => {
-    city = formatCityName(city);
+    if (city) city = formatCityName(city);
 
     this.setState({
       status: 'loading',
@@ -68,8 +68,6 @@ class App extends Component {
     };
 
     const error = (error) => {
-      setCityToAddressBar(city, `Weather: error`);
-
       document.title = `Weather: error`;
 
       let message;
