@@ -1,5 +1,5 @@
 import React from 'react';
-import { getWeatherIcon, formatDateDMY, celsiusToFahrenheit } from '../lib/util';
+import { getWeatherIcon, formatDate, celsiusToFahrenheit } from '../lib/util';
 
 const Day = ({ data, celsius }) => {
   let temp_avg = data.temp + '°C';
@@ -18,18 +18,18 @@ const Day = ({ data, celsius }) => {
 
   return (
     <div className='day'>
-      <div className='_day__date'>
-        <div className='_day__date-full'>23 October</div>
-        <div className='_day__date-day'>Monday</div>
+      <div className='day__date'>
+        <div className='day__date-full'>{formatDate(data.ts, 'D Month')}</div>
+        <div className='day__date-day'>{formatDate(data.ts, 'Day')}</div>
       </div>
 
-      <div className='_day__icon'>
-        <img src={icon} alt={data.weather.description} className='_day__img' />
+      <div className='day__icon'>
+        <img src={icon} alt={data.weather.description} className='day__img' />
       </div>
 
-      <div className='_day__temp-avg'>{temp_avg}</div>
+      <div className='day__temp-avg'>{temp_avg}</div>
 
-      <div className='_day__description'>{data.weather.description}</div>
+      <div className='day__description'>{data.weather.description}</div>
 
       <div className='day__item'>
         <div className='day__item-key'>Maximum temperature</div>

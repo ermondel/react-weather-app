@@ -24,41 +24,41 @@
   }
 }
 
-._day__date {
+.day__date {
   width: 100%;
   overflow: hidden;
   margin-bottom: 20px;
 }
 
-._day__date-full {
+.day__date-full {
   float: left;
   color: #767676;
   font-size: 12px;
 }
 
-._day__date-day {
+.day__date-day {
   float: right;
   color: green;
 }
 
-._day__icon {
+.day__icon {
   width: 100px;
   margin: 0 auto;
 }
 
-._day__img {
+.day__img {
   width: 100%;
   height: auto;
 }
 
-._day__temp-avg {
+.day__temp-avg {
   color: darkcyan;
   font-size: 24px;
   line-height: 24px;
   margin-bottom: 15px;
 }
 
-._day__description {
+.day__description {
   color: #516b78;
   margin-bottom: 20px;
   line-height: 18px;
@@ -75,16 +75,16 @@
 }
 
 @media screen and (min-width: 315px) {
-  ._day__icon {
+  .day__icon {
     float: left;
     margin-right: 20px;
   }
 
-  ._day__temp-avg {
+  .day__temp-avg {
     text-align: right;
   }
 
-  ._day__description {
+  .day__description {
     text-align: right;
   }
 
@@ -98,7 +98,7 @@
   .day__item-key {
     float: left;
     margin-bottom: 0;
-    margin-right: 10px;
+    margin-right: 5px;
   }
 
   .day__item-val {

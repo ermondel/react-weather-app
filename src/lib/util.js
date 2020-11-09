@@ -1,5 +1,4 @@
 // Get city name from address bar
-
 export function getCityFromAddressBar() {
   if (window.URLSearchParams) {
     const city = new URLSearchParams(window.location.search).get('city') || '';
@@ -11,13 +10,11 @@ export function getCityFromAddressBar() {
 }
 
 // Set city name to the browser address bar and history
-
 export function setCityToAddressBar(city, title) {
   window.history.pushState({}, title, '?city=' + city.split(' ').join('_'));
 }
 
 // Capitalize the first letters of the city name
-
 export function formatCityName(city) {
   city = city.split(' ');
 
@@ -29,8 +26,7 @@ export function formatCityName(city) {
 }
 
 // Timestamp to date (e.g. '1 March 2018')
-
-export function formatDateDMY(timestamp) {
+export function formatDate(timestamp, format) {
   const months = [
     'January',
     'February',
@@ -46,19 +42,41 @@ export function formatDateDMY(timestamp) {
     'December',
   ];
 
+  const days = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ];
+
   const date = new Date(timestamp * 1000);
 
-  return date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
+  switch (format) {
+    case 'D Month YYYY':
+      return (
+        date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear()
+      );
+
+    case 'D Month':
+      return date.getDate() + ' ' + months[date.getMonth()];
+
+    case 'Day':
+      return days[date.getDay()];
+
+    default:
+      return date.toDateString();
+  }
 }
 
 // Convert celsius to fahrenheit
-
 export function celsiusToFahrenheit(val) {
   return ((val * 9) / 5 + 32).toFixed(2);
 }
 
 // Get icon name from code
-
 export function getWeatherIcon(iconCode) {
   const iconCodes = {
     'ico-01': 'c01d',
