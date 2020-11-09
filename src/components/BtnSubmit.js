@@ -8,7 +8,10 @@ const BtnSubmit = ({ onClick, loading }) => {
   return (
     <button
       tabIndex='0'
-      onClick={onClick}
+      onClick={(e) => {
+        e.currentTarget.blur();
+        onClick();
+      }}
       disabled={loading}
       className='mainform__btn-submit'
     >

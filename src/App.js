@@ -19,9 +19,17 @@ class App extends Component {
     visible: true,
   };
 
-  setPeriod = (e) => this.setState({ period: Number(e.target.value) });
+  setPeriod = (e) => {
+    e.target.blur();
 
-  setUnit = (e) => this.setState({ celsius: e.target.value === 'celsius' });
+    this.setState({ period: Number(e.target.value) });
+  };
+
+  setUnit = (e) => {
+    e.target.blur();
+
+    this.setState({ celsius: e.target.value === 'celsius' });
+  };
 
   onChangeFavorite = (event) => {
     if (event.target.checked) {
