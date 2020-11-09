@@ -2,8 +2,19 @@
 .progress-bar {
   text-align: center;
 
-  padding-top: 20vh;
+  padding: 20vh 10px 0 10px;
 
   color: #2e3d49;
   font-size: 1.2em;
+}
+
+.error-message__message {
+  display: inline-block;
+
+  &::before {
+    content: '';
+    display: block;
+    height: 140px;
+    background: url('../assets/images/forecast-error.jpg') no-repeat top center;
+  }
 }
