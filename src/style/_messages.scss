@@ -1,4 +1,4 @@
-.error-message,
+.error,
 .progress-bar {
   text-align: center;
 
@@ -8,13 +8,22 @@
   font-size: 1.2em;
 }
 
-.error-message__message {
-  display: inline-block;
+.progress-bar__img {
+  width: 100%;
+  height: auto;
+}
 
+.error__message {
   &::before {
     content: '';
     display: block;
     height: 140px;
     background: url('../assets/images/forecast-error.jpg') no-repeat top center;
+  }
+}
+
+@media screen and (min-width: 162px) {
+  .progress-bar__img {
+    width: 162px;
   }
 }
