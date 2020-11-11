@@ -96,3 +96,40 @@ export function getWeatherIcon(iconCode) {
 
   return '';
 }
+
+// Get city name from local storage
+export function getCityFromLocalStorage() {
+  const storageKey = 'react-weather-app_favorite-city';
+
+  if (window.localStorage) {
+    return window.localStorage.getItem(storageKey) || '';
+  }
+
+  return '';
+}
+
+// Set the city name to local storage
+export function setCityToLocalStorage(city) {
+  const storageKey = 'react-weather-app_favorite-city';
+
+  if (window.localStorage && city) {
+    window.localStorage.setItem(storageKey, city);
+
+    return true;
+  }
+
+  return false;
+}
+
+// Remove city name from local storage
+export function removeCityFromLocalStorage() {
+  const storageKey = 'react-weather-app_favorite-city';
+
+  if (window.localStorage) {
+    window.localStorage.removeItem(storageKey);
+
+    return true;
+  }
+
+  return false;
+}

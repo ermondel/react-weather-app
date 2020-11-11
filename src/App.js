@@ -6,6 +6,9 @@ import {
   formatCityName,
   setCityToAddressBar,
   getCityFromAddressBar,
+  getCityFromLocalStorage,
+  setCityToLocalStorage,
+  removeCityFromLocalStorage,
 } from './lib/util';
 
 class App extends Component {
@@ -33,16 +36,12 @@ class App extends Component {
   };
 
   onChangeFavorite = (event) => {
-    if (window.localStorage) {
-      const storageKey = 'react-weather-app_favorite-city';
-
-      if (event.target.checked) {
-        window.localStorage.setItem(storageKey, this.state.city);
-
+    if (event.target.checked) {
+      if (setCityToLocalStorage(this.state.city)) {
         this.setState({ favoriteCity: this.state.city });
-      } else {
-        window.localStorage.removeItem(storageKey);
-
+      }
+    } else {
+      if (removeCityFromLocalStorage()) {
         this.setState({ favoriteCity: '' });
       }
     }
@@ -110,18 +109,16 @@ class App extends Component {
   };
 
   componentDidMount() {
-    let parameter = getCityFromAddressBar();
-    let storage = '';
+    const cityFromAddressBar = getCityFromAddressBar();
+    const cityFromLocalStorage = getCityFromLocalStorage();
 
-    if (window.localStorage) {
-      const storageKey = 'react-weather-app_favorite-city';
-      storage = window.localStorage.getItem(storageKey);
-    }
-
-    if (parameter) {
-      this.submitCity(parameter, parameter === storage);
-    } else if (storage) {
-      this.submitCity(storage, true);
+    if (cityFromAddressBar) {
+      this.submitCity(
+        cityFromAddressBar,
+        cityFromAddressBar === cityFromLocalStorage
+      );
+    } else if (cityFromLocalStorage) {
+      this.submitCity(cityFromLocalStorage, true);
     }
   }
 
