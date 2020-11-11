@@ -25,6 +25,7 @@ const Content = (props) => {
           <City
             city={props.forecast.city_name}
             onChangeFavorite={props.onChangeFavorite}
+            isFavorite={props.favoriteCity === props.forecast.city_name}
           />
           <Forecast
             forecast={props.forecast}

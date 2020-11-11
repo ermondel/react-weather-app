@@ -8,6 +8,7 @@ const City = (props) => (
         name='favorite'
         className='city-name__checkbox'
         onChange={props.onChangeFavorite}
+        checked={props.isFavorite}
       />
       <span className='city-name__value'>
         <span className='city-name__value__inner'>favorite city</span>

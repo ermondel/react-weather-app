@@ -17,6 +17,7 @@ class App extends Component {
     status: 'nothing', // nothing || loading || done || error
     error: '',
     visible: true,
+    favoriteCity: '',
   };
 
   setPeriod = (e) => {
@@ -32,30 +33,22 @@ class App extends Component {
   };
 
   onChangeFavorite = (event) => {
-    if (event.target.checked) {
-      console.log('---', 'onAddFavorite');
-    } else {
-      console.log('---', 'onDelFavorite');
+    if (window.localStorage) {
+      const storageKey = 'react-weather-app_favorite-city';
+
+      if (event.target.checked) {
+        window.localStorage.setItem(storageKey, this.state.city);
+
+        this.setState({ favoriteCity: this.state.city });
+      } else {
+        window.localStorage.removeItem(storageKey);
+
+        this.setState({ favoriteCity: '' });
+      }
     }
   };
 
-  componentDidMount() {
-    const city = getCityFromAddressBar();
-
-    if (city) {
-      this.getForecastByCity(city);
-    }
-  }
-
   getForecastByCity = (city) => {
-    if (city) city = formatCityName(city);
-
-    this.setState({
-      status: 'loading',
-      error: '',
-      city,
-    });
-
     const success = (forecast) => {
       setCityToAddressBar(city, `Weather: ${city}`);
 
@@ -100,6 +93,38 @@ class App extends Component {
     this.setState({ visible });
   };
 
+  submitCity = (city, isFavorite) => {
+    city = formatCityName(city);
+
+    let nextState = {
+      status: 'loading',
+      error: '',
+      city,
+    };
+
+    if (isFavorite) nextState.favoriteCity = city;
+
+    this.setState(nextState);
+
+    this.getForecastByCity(city);
+  };
+
+  componentDidMount() {
+    let parameter = getCityFromAddressBar();
+    let storage = '';
+
+    if (window.localStorage) {
+      const storageKey = 'react-weather-app_favorite-city';
+      storage = window.localStorage.getItem(storageKey);
+    }
+
+    if (parameter) {
+      this.submitCity(parameter, parameter === storage);
+    } else if (storage) {
+      this.submitCity(storage, true);
+    }
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -109,7 +134,7 @@ class App extends Component {
           setPeriod={this.setPeriod}
           celsius={this.state.celsius}
           setUnit={this.setUnit}
-          submitCity={this.getForecastByCity}
+          submitCity={this.submitCity}
           appStatus={this.state.status}
           setContentVisibility={this.setContentVisibility}
         />
@@ -121,6 +146,7 @@ class App extends Component {
           celsius={this.state.celsius}
           onChangeFavorite={this.onChangeFavorite}
           visible={this.state.visible}
+          favoriteCity={this.state.favoriteCity}
         />
       </React.Fragment>
     );
