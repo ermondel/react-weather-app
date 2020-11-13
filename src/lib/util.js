@@ -133,3 +133,14 @@ export function removeCityFromLocalStorage() {
 
   return false;
 }
+
+// qwe
+export function footerYear(startYear) {
+  const currentYear = new Date().getFullYear();
+
+  if (startYear === currentYear) {
+    return startYear;
+  }
+
+  return `${startYear} - ${currentYear}`;
+}
