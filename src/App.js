@@ -101,7 +101,9 @@ class App extends Component {
       city,
     };
 
-    if (isFavorite) nextState.favoriteCity = city;
+    if (isFavorite) {
+      nextState.favoriteCity = city;
+    }
 
     this.setState(nextState);
 

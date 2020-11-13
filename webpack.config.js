@@ -78,7 +78,9 @@ const js = () => {
     },
   ];
 
-  if (isDev) use.push('eslint-loader');
+  if (isDev) {
+    use.push('eslint-loader');
+  }
 
   return {
     test: /\.js$/,

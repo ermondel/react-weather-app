@@ -11,7 +11,10 @@ const Header = (props) => {
   const [city, setCity] = useState(undefined);
 
   let menuClass = 'mainform__options';
-  if (!menuVisibility) menuClass += '--hide';
+
+  if (!menuVisibility) {
+    menuClass += '--hide';
+  }
 
   const submitCity = () => {
     props.submitCity(city === undefined ? props.city : city);

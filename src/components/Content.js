@@ -8,7 +8,9 @@ const Content = (props) => {
   let content;
   let className = 'main';
 
-  if (!props.visible) className += '--hide';
+  if (!props.visible) {
+    className += '--hide';
+  }
 
   switch (props.status) {
     case 'loading':
