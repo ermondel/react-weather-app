@@ -12,7 +12,7 @@ const Footer = () => (
       title='Author'
       className='footer__link'
     >
-      ermondel
+      Serhii
     </a>
   </footer>
 );
