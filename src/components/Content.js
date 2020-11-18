@@ -6,11 +6,6 @@ import Forecast from './Forecast';
 
 const Content = (props) => {
   let content;
-  let className = 'main';
-
-  if (!props.visible) {
-    className += '--hide';
-  }
 
   switch (props.status) {
     case 'loading':
@@ -22,12 +17,15 @@ const Content = (props) => {
       break;
 
     case 'done':
+      const favoriteCity = props.favoriteCity.toLowerCase();
+      const currentCity = props.forecast.city_name.toLowerCase();
+
       content = (
         <React.Fragment>
           <City
             city={props.forecast.city_name}
             onChangeFavorite={props.onChangeFavorite}
-            isFavorite={props.favoriteCity === props.forecast.city_name}
+            isFavorite={favoriteCity === currentCity}
           />
           <Forecast
             forecast={props.forecast}
@@ -43,7 +41,7 @@ const Content = (props) => {
       break;
   }
 
-  return <main className={className}>{content}</main>;
+  return <main className={props.visible ? 'main' : 'main--hide'}>{content}</main>;
 };
 
 export default Content;

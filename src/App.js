@@ -37,8 +37,10 @@ class App extends Component {
 
   onChangeFavorite = (event) => {
     if (event.target.checked) {
-      if (setCityToLocalStorage(this.state.city)) {
-        this.setState({ favoriteCity: this.state.city });
+      const city = this.state.city.toLowerCase();
+
+      if (setCityToLocalStorage(city)) {
+        this.setState({ favoriteCity: city });
       }
     } else {
       if (removeCityFromLocalStorage()) {
@@ -112,8 +114,8 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const cityFromAddressBar = getCityFromAddressBar();
-    const cityFromLocalStorage = getCityFromLocalStorage();
+    const cityFromAddressBar = getCityFromAddressBar().toLowerCase();
+    const cityFromLocalStorage = getCityFromLocalStorage().toLowerCase();
 
     if (cityFromAddressBar) {
       this.submitCity(
