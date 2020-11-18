@@ -8,7 +8,7 @@ const CityInput = ({ city, setCity, submitCity, loading }) => (
     disabled={loading}
     placeholder='e.g. New York'
     className='mainform__input'
-    onChange={(event) => setCity(event.target.value)}
+    onChange={setCity}
     onKeyDown={(event) => event.key === 'Enter' && submitCity()}
   />
 );

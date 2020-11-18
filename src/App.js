@@ -49,13 +49,14 @@ class App extends Component {
 
   getForecastByCity = (city) => {
     const success = (forecast) => {
-      setCityToAddressBar(city, `Weather: ${city}`);
+      setCityToAddressBar(forecast.city_name, `Weather: ${forecast.city_name}`);
 
-      document.title = `Weather: ${city}`;
+      document.title = `Weather: ${forecast.city_name}`;
 
       this.setState({
         status: 'done',
         forecast,
+        city: forecast.city_name,
       });
     };
 
