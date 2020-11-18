@@ -7,27 +7,11 @@ import BtnSubmit from './BtnSubmit';
 import CityInput from './CityInput';
 
 const Header = (props) => {
-  const [menuVisibility, setMenuVisibility] = useState(false);
   const [city, setCity] = useState(undefined);
-
-  let menuClass = 'mainform__options';
-
-  if (!menuVisibility) {
-    menuClass += '--hide';
-  }
+  const classMenu = props.menu ? 'mainform__options' : 'mainform__options--hide';
 
   const submitCity = () => {
     props.submitCity(city === undefined ? props.city : city);
-  };
-
-  const openMenu = () => {
-    setMenuVisibility(true);
-    props.setContentVisibility(false);
-  };
-
-  const closeMenu = () => {
-    setMenuVisibility(false);
-    props.setContentVisibility(true);
   };
 
   return (
@@ -36,7 +20,7 @@ const Header = (props) => {
         <h1 className='header__title'>Weather forecast</h1>
 
         <div className='mainform'>
-          <BtnMenuOpen onClick={openMenu} />
+          <BtnMenuOpen onClick={() => props.setMenu(true)} />
 
           <div className='mainform__central'>
             <CityInput
@@ -46,10 +30,10 @@ const Header = (props) => {
               loading={props.appStatus === 'loading'}
             />
 
-            <div className={menuClass}>
+            <div className={classMenu}>
               <Period period={props.period} setPeriod={props.setPeriod} />
               <Unit celsius={props.celsius} setUnit={props.setUnit} />
-              <BtnMenuClose onClick={closeMenu} />
+              <BtnMenuClose onClick={() => props.setMenu(false)} />
             </div>
           </div>
 

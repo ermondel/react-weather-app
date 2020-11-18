@@ -13,14 +13,14 @@ import {
 
 class App extends Component {
   state = {
-    city: '',
-    period: 3,
-    celsius: true,
-    forecast: null, // object (see api doc)
-    status: 'nothing', // nothing || loading || done || error
-    error: '',
-    visible: true,
+    city: '', // city name
+    period: 3, // amount of days: 1 | 3 | 7 | 14
+    celsius: true, // units of temperature: true (Celsius) | false (Fahrenheit)
+    forecast: null, // obj, doc: www.weatherbit.io/api/weather-forecast-16-day
+    status: 'nothing', // app status: nothing | loading | done | error
+    error: '', // error message
     favoriteCity: '',
+    menu: false, // mobile menu visibility: true | false
   };
 
   setPeriod = (e) => {
@@ -88,8 +88,8 @@ class App extends Component {
     weatherbit(city).then(success).catch(error);
   };
 
-  setContentVisibility = (visible) => {
-    this.setState({ visible });
+  setMenu = (menu) => {
+    this.setState({ menu });
   };
 
   submitCity = (city, isFavorite) => {
@@ -128,14 +128,15 @@ class App extends Component {
     return (
       <React.Fragment>
         <Header
-          city={this.state.city}
+          appStatus={this.state.status}
           period={this.state.period}
           setPeriod={this.setPeriod}
           celsius={this.state.celsius}
           setUnit={this.setUnit}
+          city={this.state.city}
           submitCity={this.submitCity}
-          appStatus={this.state.status}
-          setContentVisibility={this.setContentVisibility}
+          menu={this.state.menu}
+          setMenu={this.setMenu}
         />
         <Content
           status={this.state.status}
@@ -144,7 +145,7 @@ class App extends Component {
           period={this.state.period}
           celsius={this.state.celsius}
           onChangeFavorite={this.onChangeFavorite}
-          visible={this.state.visible}
+          visible={!this.state.menu}
           favoriteCity={this.state.favoriteCity}
         />
       </React.Fragment>
