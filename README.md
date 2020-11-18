@@ -14,12 +14,15 @@ Weather forecast for the specified city.
 - Units of temperature: Celsius and Fahrenheit.
 - Save favorite city.
 
+### Usage
+
+[Demo](https://ermondel.github.io/react-weather-app/)
+
 | Technologies   |
 | -------------- |
 | React          |
 | Webpack        |
 | Sass           |
-| React Hooks    |
 | Fetch          |
 | ESLint         |
 | Weatherbit API |

@@ -134,7 +134,7 @@ export function removeCityFromLocalStorage() {
   return false;
 }
 
-// qwe
+// Get a range of years for copyright info
 export function footerYear(startYear) {
   const currentYear = new Date().getFullYear();
 
