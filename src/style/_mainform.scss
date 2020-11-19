@@ -57,7 +57,6 @@
   &:hover,
   &:focus {
     outline: 0;
-    background-color: #3980ad;
   }
 
   &:disabled {
@@ -92,7 +91,6 @@
   &:hover,
   &:focus {
     outline: 0;
-    background-color: #3980ad;
   }
 }
 
@@ -124,5 +122,11 @@
   .mainform__btn-submit {
     min-width: 100px;
     padding: 10px 12px;
+
+    &:hover,
+    &:focus {
+      outline: 0;
+      background-color: #3980ad;
+    }
   }
 }

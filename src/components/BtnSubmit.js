@@ -3,19 +3,21 @@ import IconLoading from './IconLoading';
 import IconSearch from './IconSearch';
 
 const BtnSubmit = ({ onClick, loading }) => {
-  const text = loading ? 'loading...' : 'Search';
+  const onBtnClick = (event) => {
+    event.currentTarget.blur();
+    onClick();
+  };
 
   return (
     <button
       tabIndex='0'
-      onClick={(e) => {
-        e.currentTarget.blur();
-        onClick();
-      }}
+      onClick={onBtnClick}
       disabled={loading}
       className='mainform__btn-submit'
     >
-      <span className='mainform__search-text'>{text}</span>
+      <span className='mainform__search-text'>
+        {loading ? 'loading...' : 'Search'}
+      </span>
       <span className='mainform__search-icon'>
         {loading ? <IconLoading /> : <IconSearch />}
       </span>
