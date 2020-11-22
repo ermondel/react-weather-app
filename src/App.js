@@ -63,7 +63,9 @@ class App extends Component {
     };
 
     const error = (error) => {
-      document.title = `Weather: error`;
+      if (city) {
+        document.title = 'Weather: ' + city;
+      }
 
       let message;
 
