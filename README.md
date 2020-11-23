@@ -20,6 +20,8 @@ Weather forecast for the specified city.
 
 [![Weather App](https://github.com/ermondel/wiki/blob/master/screens/react-weather-app.jpg)](https://ermondel.github.io/react-weather-app/)
 
+[![Weather App](https://github.com/ermondel/wiki/blob/master/screens/react-weather-app_smartphone.jpg)](https://ermondel.github.io/react-weather-app/)
+
 | Technologies   |
 | -------------- |
 | React          |
